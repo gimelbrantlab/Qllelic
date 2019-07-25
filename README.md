@@ -1,22 +1,12 @@
----
-output: github_document
----
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
-# AIQC
+AIQC
+====
 
 The goal of AIQC is to ...
 
-## Installation
+Installation
+------------
 
 When package is on CRAN, you should be able to install the released version of AIQC from [CRAN](https://CRAN.R-project.org) with:
 
@@ -24,11 +14,12 @@ When package is on CRAN, you should be able to install the released version of A
 # install.packages("AIQC")
 ```
 
-## Example
+Example
+-------
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example}
+``` r
 #library(AIQC)
 ## basic example code
 ```
