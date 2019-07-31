@@ -1,11 +1,11 @@
-Package: AIQC
+Package: QCumber
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Svetlana",
+           family = "Vinogradova",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
+           email = "kintany@gmail.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: What the package does (one paragraph).
 License: GPL-3

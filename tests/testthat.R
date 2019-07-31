@@ -1,4 +1,4 @@
 library(testthat)
-library(AIQC)
+library(QCumber)
 
-test_check("AIQC")
+test_check("QCumber")
