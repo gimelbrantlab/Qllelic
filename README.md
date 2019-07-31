@@ -1,17 +1,17 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-AIQC
+QCumber
 ====
 
-The goal of AIQC is to ...
+The goal of QCumber is to ...
 
 Installation
 ------------
 
-When package is on CRAN, you should be able to install the released version of AIQC from [CRAN](https://CRAN.R-project.org) with:
+When package is on CRAN, you should be able to install the released version of QCumber from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-# install.packages("AIQC")
+# install.packages("QCumber")
 ```
 
 Example
@@ -20,6 +20,6 @@ Example
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
-#library(AIQC)
+#library(QCumber)
 ## basic example code
 ```
