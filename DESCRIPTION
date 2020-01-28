@@ -1,17 +1,14 @@
 Package: QCumber
-Title: What the Package Does (One Line, Title Case)
+Title: Detects differential allelic imbalance from RNA-seq data
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Svetlana",
            family = "Vinogradova",
            role = c("aut", "cre"),
            email = "kintany@gmail.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+           comment = c(ORCID = "0000-0002-5419-8812"))
 Description: What the package does (one paragraph).
-License: GPL-3
-Suggests: 
-    testthat (>= 2.1.0)
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
