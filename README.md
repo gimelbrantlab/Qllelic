@@ -11,7 +11,7 @@ The goal of QCumber is to …
 
 ## Installation
 
-You can install out package using this code:
+To install this package in R:
 
 ``` r
 devtools::install_github("gimelbrantlab/QCumber")
