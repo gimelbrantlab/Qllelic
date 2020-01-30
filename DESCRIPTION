@@ -2,11 +2,16 @@ Package: QCumber
 Title: Detects differential allelic imbalance from RNA-seq data
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "Svetlana",
-           family = "Vinogradova",
-           role = c("aut", "cre"),
-           email = "kintany@gmail.com",
-           comment = c(ORCID = "0000-0002-5419-8812"))
+    c(person(given = "Asia",
+             family = "Mendelevich",
+             role = c("aut", "cre"),
+             email = "mendelevich.asia@gmail.com",
+             comment = c(ORCID = "0000-0002-1221-3287")),
+      person(given = "Svetlana",
+             family = "Vinogradova",
+             role = c("aut", "cre"),
+             email = "kintany@gmail.com",
+             comment = c(ORCID = "0000-0002-5419-8812")))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
