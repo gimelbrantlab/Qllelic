@@ -1,11 +1,14 @@
-#' GetGatkPipelineTabs: Concatenate vertically (uniting merge) tables from inFiles.
+#' GetGatkPipelineTabs
 #'
-#' @param inFiles A vector of full pathes to files with gene names and allelic counts
-#' @param nReps A vector of numbers, each entry is a number of replicates in the corresponding file
-#' @param contigs Parameter defining if the resulting table should be filtered by contig column preserving only row corresponding to a given vector, default set to empty vector() and no filtering applied
+#' Loads the working parts of tables ("ID", allele count 2x columns, "contig" if specified); concatenates (uniting merge) tables from all provided files.
 #'
-#' @return A concatenated table with means/counts, each row corresponds to a gene
+#' @param inFiles A vector of full pathes to files with alelleic counts tables (necessary columns: "ID", pairs of ref and alt counts; optionally, for filtering, "contig")gene names and allelic counts
+#' @param nReps A vector of numbers, either: (1) each entry is a number of replicates in the corresponding file; (2) for one file only, each entry is a number of replicates corresponding to particular experiment
+#' @param contigs Parameter defining if the resulting table should be filtered by contig column (preserving only rows corresponding to a given vector), default set to empty vector() and no filtering applied
+#'
+#' @return A concatenated table with allele counts for all replicates, each row corresponds to a feature ("ID")
 #' @export
+#'
 #' @importFrom "utils" "read.delim"
 #'
 GetGatkPipelineTabs <- function(inFiles, nReps, contigs = vector()){

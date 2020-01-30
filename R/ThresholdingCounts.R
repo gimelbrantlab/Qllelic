@@ -1,3 +1,5 @@
+#' ThresholdingCounts
+#'
 #' Takes table with gene names and counts and returns table, where all genes that under threshold have NA coverage. Can be restricted to particular reps.
 #'
 #' @param df A dataframe of genes/transcripts and parental counts for technical replicates in columns
@@ -8,6 +10,8 @@
 #'
 #' @return Table with masked with NA undercovered genes
 #' @export
+#'
+#' @examples ThresholdingCounts(df = Abl1_allele_counts, reps = c(1,2), thr = 10)
 #'
 ThresholdingCounts <- function(df, reps=NA, thr=NA, thrUP=NA, thrType="each"){
 

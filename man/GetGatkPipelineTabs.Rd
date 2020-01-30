@@ -2,20 +2,20 @@
 % Please edit documentation in R/GetGatkPipelineTabs.R
 \name{GetGatkPipelineTabs}
 \alias{GetGatkPipelineTabs}
-\title{GetGatkPipelineTabs: Concatenate vertically (uniting merge) tables from inFiles.}
+\title{GetGatkPipelineTabs}
 \usage{
 GetGatkPipelineTabs(inFiles, nReps, contigs = vector())
 }
 \arguments{
-\item{inFiles}{A vector of full pathes to files with gene names and allelic counts}
+\item{inFiles}{A vector of full pathes to files with alelleic counts tables (necessary columns: "ID", pairs of ref and alt counts; optionally, for filtering, "contig")gene names and allelic counts}
 
-\item{nReps}{A vector of numbers, each entry is a number of replicates in the corresponding file}
+\item{nReps}{A vector of numbers, either: (1) each entry is a number of replicates in the corresponding file; (2) for one file only, each entry is a number of replicates corresponding to particular experiment}
 
-\item{contigs}{Parameter defining if the resulting table should be filtered by contig column preserving only row corresponding to a given vector, default set to empty vector() and no filtering applied}
+\item{contigs}{Parameter defining if the resulting table should be filtered by contig column (preserving only rows corresponding to a given vector), default set to empty vector() and no filtering applied}
 }
 \value{
-A concatenated table with means/counts, each row corresponds to a gene
+A concatenated table with allele counts for all replicates, each row corresponds to a feature ("ID")
 }
 \description{
-GetGatkPipelineTabs: Concatenate vertically (uniting merge) tables from inFiles.
+Loads the working parts of tables ("ID", allele count 2x columns, "contig" if specified); concatenates (uniting merge) tables from all provided files.
 }
