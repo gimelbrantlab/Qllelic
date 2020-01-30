@@ -24,6 +24,6 @@ Table with names and sums of mat and pat coverages among given replicates.
 Creates a table of sums of maternal and paternal count for given replicates.
 }
 \examples{
-MeanCoverage(Abl1_allele_counts, reps=c(1,2))
+MeanCoverage(allelicCountsTable, reps=c(1,2))
 
 }

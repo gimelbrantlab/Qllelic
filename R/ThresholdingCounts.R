@@ -11,7 +11,7 @@
 #' @return Table with masked with NA undercovered genes
 #' @export
 #'
-#' @examples ThresholdingCounts(df = Abl1_allele_counts, reps = c(1,2), thr = 10)
+#' @examples ThresholdingCounts(df = allelicCountsTable, reps = c(1,2), thr = 10)
 #'
 ThresholdingCounts <- function(df, reps=NA, thr=NA, thrUP=NA, thrType="each"){
 

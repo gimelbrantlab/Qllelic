@@ -7,7 +7,7 @@
 CountsToAI(
   df,
   reps = NA,
-  meth = "meanOfProportions",
+  meth = "mergedToProportion",
   thr = NA,
   thrUP = NA,
   thrType = "each"
@@ -33,5 +33,6 @@ Df with names and mean(mean(m_1,...,m_6))_SNP / mean(mean(m_1+p_1,...,m_6+p6))_S
 Calculates allelic imbalances from merged counts over given replicates (ai(sum_reps(gene)))
 }
 \examples{
+CountsToAI(allelicCountsTable, reps=c(1,2), thr=10, thrUP=1000)
 
 }

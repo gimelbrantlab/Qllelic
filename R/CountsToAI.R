@@ -12,9 +12,9 @@
 #' @return Df with names and mean(mean(m_1,...,m_6))_SNP / mean(mean(m_1+p_1,...,m_6+p6))_SNP
 #' @export
 #'
-#' @examples
+#' @examples CountsToAI(allelicCountsTable, reps=c(1,2), thr=10, thrUP=1000)
 #'
-CountsToAI <- function(df, reps=NA, meth="meanOfProportions", thr=NA, thrUP=NA, thrType="each"){
+CountsToAI <- function(df, reps=NA, meth="mergedToProportion", thr=NA, thrUP=NA, thrType="each"){
   ddf <- ThresholdingCounts(df, reps, thr, thrUP, thrType)
 
   if(ncol(ddf) == 3){ # if 1 replicate

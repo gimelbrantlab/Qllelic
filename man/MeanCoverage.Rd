@@ -24,6 +24,6 @@ Df with names and Mean coverage mat+pat among given replicates.
 Calculates mean coverage mat+pat among given replicates.
 }
 \examples{
-MeanCoverage(Abl1_allele_counts, thr=8)
+MeanCoverage(allelicCountsTable, reps=c(3,4), thr=8)
 
 }

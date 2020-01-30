@@ -11,7 +11,7 @@
 #' @return Table with names and sums of mat and pat coverages among given replicates.
 #' @export
 #'
-#' @examples MeanCoverage(Abl1_allele_counts, reps=c(1,2))
+#' @examples MeanCoverage(allelicCountsTable, reps=c(1,2))
 #'
 MergeSumCounts <- function(df, reps=NA, thr=NA, thrUP=NA, thrType="each"){
   options(stringsAsFactors = FALSE)

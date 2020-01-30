@@ -24,6 +24,6 @@ Table with masked with NA undercovered genes
 Takes table with gene names and counts and returns table, where all genes that under threshold have NA coverage. Can be restricted to particular reps.
 }
 \examples{
-ThresholdingCounts(df = Abl1_allele_counts, reps = c(1,2), thr = 10)
+ThresholdingCounts(df = allelicCountsTable, reps = c(1,2), thr = 10)
 
 }

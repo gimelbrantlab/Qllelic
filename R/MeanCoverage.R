@@ -11,7 +11,7 @@
 #' @return Df with names and Mean coverage mat+pat among given replicates.
 #' @export
 #'
-#' @examples MeanCoverage(Abl1_allele_counts, thr=8)
+#' @examples MeanCoverage(allelicCountsTable, reps=c(3,4), thr=8)
 #'
 MeanCoverage <- function(df, reps=NA, thr=NA, thrUP=NA, thrType="each"){
   ddf <- ThresholdingCounts(df, reps, thr, thrUP, thrType)

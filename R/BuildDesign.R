@@ -13,17 +13,20 @@
 #'
 BuildDesign <- function(experimentNames, techReps, corrConst=NA){
   rowsSp <- data.frame(matrix(lapply(1:length(techReps), function(x){
-    (2*sum(techReps[1:x-1])+1):(2*sum(techReps[1:x]))
-  }),
-  nrow=length(techReps), byrow=T), stringsAsFactors=FALSE)
+              (2*sum(techReps[1:x-1])+1):(2*sum(techReps[1:x]))
+            }),
+            nrow=length(techReps), byrow=T), stringsAsFactors=FALSE)
   colnames(rowsSp) <- "replicateCols"
+
   colExp <- data.frame(matrix(lapply(1:length(techReps), function(x){
-    (sum(techReps[1:x])-techReps[x]+1):(sum(techReps[1:x]))
-  }),
-  nrow=length(techReps), byrow=T), stringsAsFactors=FALSE)
+              (sum(techReps[1:x])-techReps[x]+1):(sum(techReps[1:x]))
+            }),
+            nrow=length(techReps), byrow=T), stringsAsFactors=FALSE)
   colnames(colExp) <- "replicateNums"
+
   designMatrix <- cbind(experimentNames, techReps, rowsSp, colExp)
   colnames(designMatrix) <- c("experimentNames", "techReps", "replicateCols", "replicateNums")
+
   if (!sum(is.na(corrConst))) {
     designMatrix <- cbind(designMatrix, corrConst)
   }
