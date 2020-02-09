@@ -18,6 +18,6 @@ Vector with names
 Helper function to quickly rename columns in geneCountTab dataframe
 }
 \examples{
-colnames(Abl_1and2_allelic_counts)[2:9] <- c(NameColumns(1,2), NameColumns(2,2))
+colnames(allelicCountsTable)[2:9] <- c(NameColumns(1,2), NameColumns(2,2))
 
 }

@@ -9,7 +9,7 @@ Authors@R:
              comment = c(ORCID = "0000-0002-1221-3287")),
       person(given = "Svetlana",
              family = "Vinogradova",
-             role = c("aut", "cre"),
+             role = c("aut"),
              email = "kintany@gmail.com",
              comment = c(ORCID = "0000-0002-5419-8812")))
 Description: What the package does (one paragraph).
@@ -18,4 +18,5 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.0.2
 Imports: 
-    utils
+    utils,
+    stats
