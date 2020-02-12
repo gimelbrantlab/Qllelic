@@ -22,7 +22,6 @@ PerformBinTestAIAnalysisForTwoConditions_knownCC <- function(inDF, vect1CondReps
                                                              Q=0.95,
                                                              thr=NA, thrUP=NA, thrType="each", minDifference=NA){
 
-  options(stringsAsFactors = FALSE)
 
   vectReps <- list(vect1CondReps, vect2CondReps)
   vectRepsCombsCC <- list(vect1CondRepsCombsCC,
@@ -31,7 +30,9 @@ PerformBinTestAIAnalysisForTwoConditions_knownCC <- function(inDF, vect1CondReps
 
   DF_CI_divided <- lapply(1:2, function(i){
     ComputeAICIs(inDF, vectReps=vectReps[[i]], vectRepsCombsCC=vectRepsCombsCC[[i]],
-                 Q=Q, BF=T, thr=thr, thrUP=thrUP, thrType=thrType)
+                 Q=Q, BF=T, thr=thr, thrUP=thrUP, thrType=thrType)[, c("ID","sumCOV","matCOV","AI",
+                                                                         "BT_CIleft","BT_CIright",
+                                                                         "BT_CIleft_CC","BT_CIright_CC")]
   })
 
   DF <- merge(DF_CI_divided[[1]], DF_CI_divided[[2]], by = "ID")
@@ -39,33 +40,34 @@ PerformBinTestAIAnalysisForTwoConditions_knownCC <- function(inDF, vect1CondReps
                  paste0(names(DF_CI_divided[[1]])[-1], '_1'),
                  paste0(names(DF_CI_divided[[2]])[-1], '_2'))
 
+  # Tests:
   diff_analysis_genes_num <- nrow(na.omit(DF))
 
   DF$BT_pval <- sapply(1:nrow(DF), function(i){
     if (!is.na(DF$matCOV_1[i]) & !is.na(DF$matCOV_2[i]) & DF$matCOV_1[i] > 0 & DF$matCOV_2[i] > 0){
-      prop.test(x = c(DF$matCOV_1[i], DF$matCOV_2[i]), n = c(DF$sumCOV_1[i], DF$sumCOV_2[i]),
-                alternative="two.sided", conf.level = (1-(1-Q)/diff_analysis_genes_num), correct=F)$p.value
+      prop.test(x = c(DF$matCOV_1[i], DF$matCOV_2[i]),
+                n = c(DF$sumCOV_1[i], DF$sumCOV_2[i]),
+                alternative="two.sided", correct=F)$p.value
+    } else {
+      NA
+    }
+  })
+
+  k1 <- 1/meanRepsCombsCC[[1]]**2
+  k2 <- 1/meanRepsCombsCC[[2]]**2
+
+  DF$BT_CC_pval <- sapply(1:nrow(DF), function(i){
+    if (!is.na(DF$matCOV_1[i]) & !is.na(DF$matCOV_2[i]) & DF$matCOV_1[i] > 0 & DF$matCOV_2[i] > 0){
+      prop.test(x = c(DF$matCOV_1[i] * k1, DF$matCOV_2[i] * k2),
+                n = c(DF$sumCOV_1[i] * k1, DF$sumCOV_2[i] * k2),
+                alternative="two.sided", correct=F)$p.value
     } else {
       NA
     }
   })
 
   DF$BT    <- (DF$BT_pval <= (1-Q)/diff_analysis_genes_num)
-
-  DF$BT_CC_pval <- sapply(1:nrow(DF), function(i){
-    if (!is.na(DF$matCOV_1[i]) & !is.na(DF$matCOV_2[i]) & DF$matCOV_1[i] > 0 & DF$matCOV_2[i] > 0){
-      k <- 1/meanRepsCombsCC**2
-      prop.test(x = c(DF$matCOV_1[i], DF$matCOV_2[i]) * k,
-                n = c(DF$sumCOV_1[i], DF$sumCOV_2[i]) * k,
-                alternative="two.sided", conf.level = (1-(1-Q)/diff_analysis_genes_num), correct=F)$p.value
-    } else {
-      NA
-    }
-  })
-
   DF$BT_CC <- (DF$BT_CC_pval <= (1-Q)/diff_analysis_genes_num)
-
-  #print(DF)
 
   if (!is.na(minDifference))
   {

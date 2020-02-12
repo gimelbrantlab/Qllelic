@@ -8,6 +8,7 @@ ComputeAICIs(
   inDF,
   vectReps,
   vectRepsCombsCC,
+  pt = 0.5,
   Q = 0.95,
   BF = T,
   thr = NA,
@@ -22,6 +23,8 @@ ComputeAICIs(
 
 \item{vectRepsCombsCC}{A vector of pairwise-computed correction constants for given replicates}
 
+\item{pt}{A value or a vector of values to compare with (if second, should be compatible with the order and size of genes vector in table of allelic counts)}
+
 \item{Q}{An optional parameter; quantile (for example 0.95, 0.8, etc)}
 
 \item{BF}{Bonferroni correction, set False if Q is alredy corrected}
@@ -33,7 +36,7 @@ ComputeAICIs(
 \item{thrType}{An optional parameter for threshold type (default = "each", also can be "average" coverage on replicates)}
 }
 \value{
-A table of gene names, AIs + CIs
+A table of gene names, AI, coverage, test p-value, and Confidence Intervals
 }
 \description{
 Calculate Binomial and QCC-corrected binomial CIs for a given vector of point estimates, for given QCC.

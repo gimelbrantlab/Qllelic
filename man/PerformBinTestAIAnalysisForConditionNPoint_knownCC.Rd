@@ -37,7 +37,7 @@ PerformBinTestAIAnalysisForConditionNPoint_knownCC(
 \item{minDifference}{if specified, one additional column DAE is added to the output (T/F depending if the gene changed AI expression more than minDifference in addition to having non-overlapping CIs)}
 }
 \value{
-A table of gene names, AIs + CIs, classification into genes demonstrating signifficant difference from point estimate AI and those that don't
+A table of gene names, AIs + CIs, classification into genes demonstrating signifficant difference (TRUE) from point estimate AI and those that don't (FALSE)
 }
 \description{
 Perform Binomial and QCC-corrected binomial tests with a given point estimate, for given QCC.
