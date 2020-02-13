@@ -14,7 +14,7 @@ devtools::install_github("gimelbrantlab/QCumber")
 
 ## Usage
 
-Please see Wiki page for [worked exaples](https://github.com/gimelbrantlab/QCumber/wiki).
+Please see [Wiki page](https://github.com/gimelbrantlab/QCumber/wiki) for worked exaples.
 
 ## Citations
 
