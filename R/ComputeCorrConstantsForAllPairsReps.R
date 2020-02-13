@@ -14,7 +14,7 @@
 #' @export
 #'
 ComputeCorrConstantsForAllPairsReps <- function(inDF, vectReps, binNObs=40, fitCovThr=50,
-                                                EPS=1.3, thr=NA, thrUP=NA, thrType="each"){
+                                                EPS=1.05, thr=NA, thrUP=NA, thrType="each"){
 
   options(stringsAsFactors = FALSE)
 

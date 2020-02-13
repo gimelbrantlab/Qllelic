@@ -19,7 +19,7 @@
 PerformBinTestAIAnalysisForConditionNPointVect <- function(inDF, vectReps,
                                                            ptVect,
                                                            binNObs=40, Q=0.95,
-                                                           fitCovThr=50, EPS=1.3,
+                                                           fitCovThr=50, EPS=1.05,
                                                            thr=NA, thrUP=NA, thrType="each",
                                                            minDifference=NA){
 

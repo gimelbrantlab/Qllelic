@@ -26,13 +26,17 @@ GetGatkPipelineTabs <- function(inFiles, nReps, contigs = vector()){
   if(length(contigs) != 0){
     # i.e. filtering by contig is needed
     cs_merge <- c("ID", "contig")
-    # contig column identification:
-    c_contig <- which(names(read.delim(inFiles[1], sep="\t")) == "contig")
     if(length(inFiles) == 1){
+      # contig column identification:
+      c_contig <- which(names(read.delim(inFiles[1], sep="\t")) == "contig")
       cs <- list(c(1, 2:(2*sum(nReps)+1), c_contig))
       cs_names <- list(c("ID", unlist(nameColumns(nReps)), "contig"))
     } else {
-      cs <- lapply(1:length(nReps), function(i){c(1, 2:(2*nReps[i]+1), c_contig)})
+      cs <- lapply(1:length(nReps), function(i){
+        # contig column identification:
+        c_contig <- which(names(read.delim(inFiles[i], sep="\t")) == "contig")
+        c(1, 2:(2*nReps[i]+1), c_contig)
+      })
       cs_names <- lapply(nameColumns(nReps), function(x){c("ID", x, "contig")})
     }
   } else {

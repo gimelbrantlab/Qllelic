@@ -16,7 +16,7 @@
 #' @return List of (1) fitted QCC for all combanatorial pairs of replicates for both conditions ($CC), (2) ComputeCorrConstantsForAllPairsReps() output for both conditions ($FitDATA), and (3) PerformBinTestAIAnalysisForTwoConditions_knownCC() output ($Output).
 #' @export
 #'
-PerformBinTestAIAnalysisForTwoConditions <- function(inDF, vect1CondReps, vect2CondReps, binNObs=40, fitCovThr=50, Q=0.95, EPS=1.3,
+PerformBinTestAIAnalysisForTwoConditions <- function(inDF, vect1CondReps, vect2CondReps, binNObs=40, fitCovThr=50, Q=0.95, EPS=1.05,
                                                      thr=NA, thrUP=NA, thrType="each", minDifference=NA){
 
   fitDATA1Cond <- ComputeCorrConstantsForAllPairsReps(inDF, vectReps=vect1CondReps, binNObs=binNObs, fitCovThr=fitCovThr,

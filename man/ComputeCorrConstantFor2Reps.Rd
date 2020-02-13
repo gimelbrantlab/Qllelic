@@ -9,7 +9,7 @@ ComputeCorrConstantFor2Reps(
   reps,
   binNObs = 40,
   fitCovThr = 50,
-  EPS = 1.3,
+  EPS = 1.05,
   thr = NA,
   thrUP = NA,
   thrType = "each"
