@@ -14,7 +14,9 @@ devtools::install_github("gimelbrantlab/QCumber")
 
 ## Usage
 
-Please see [Wiki page](https://github.com/gimelbrantlab/QCumber/wiki) for worked exaples.
+Please see [Wiki page](https://github.com/gimelbrantlab/QCumber/wiki) for worked exaples:
+* for [QCC calculation and CI estimation](https://github.com/gimelbrantlab/QCumber/wiki/Use-case-1:-One-biological-sample)
+* for [AI differential analysis for two samples](https://github.com/gimelbrantlab/QCumber/wiki/Use-case-2:-Differential-AI-analysis)
 
 ## Citations
 
