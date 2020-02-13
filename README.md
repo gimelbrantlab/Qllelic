@@ -12,7 +12,7 @@ To install this package in R:
 devtools::install_github("gimelbrantlab/QCumber")
 ```
 
-## Worked examples
+## Usage
 
 Please see Wiki page for [worked exaples](https://github.com/gimelbrantlab/QCumber/wiki).
 
