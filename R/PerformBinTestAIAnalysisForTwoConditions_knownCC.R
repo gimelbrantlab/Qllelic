@@ -1,18 +1,20 @@
 #' PerformBinTestAIAnalysisForTwoConditions_knownCC
 #'
-#' Perform differential tests for AI values for two conditions, for given QCC.
+#' Performs differential tests (with Bonferroni correction) for AI values for two conditions, for given QCC.
 #'
-#' @param inDF A table with ref & alt counts per gene/SNP for each replicate plus the first column with gene/SNP names
+#' @param inDF Allele counts dataframe: with 2n+1 columns, "ID" and 2n columns with ref & alt counts (rep1_ref, rep1_alt, rep2_ref, rep2_alt, ...)
 #' @param vect1CondReps A vector (>=2) of replicate numbers that should be considered as first condition's tech reps
 #' @param vect2CondReps A vector (>=2) of replicate numbers that should be considered as second condition's tech reps
-#' @param vect1CondRepsCombsCC A vector of pairwise-computed correction constants for first condition's tech reps
-#' @param vect2CondRepsCombsCC A vector of pairwise-computed correction constants for second condition's tech reps
-#' @param Q An optional parameter; quantile (for example 0.95, 0.8, etc)
-#' @param thr An optional parameter; threshold on the overall number of counts (in all replicates combined) for a gene to be considered
-#' @param thrUP An optional parameter for a threshold for max gene coverage (default = NA)
-#' @param thrType An optional parameter for threshold type (default = "each", also can be "average" coverage on replicates)
-#' @param minDifference if specified, one additional column DAE is added to the output (T/F depending if the gene changed AI expression more than minDifference in addition to having non-overlapping CIs)
-#' @return A table of gene names, AIs + CIs for both conditions, classification into genes demonstrating signifficant difference of AI estimates in two conditions, and those that don't
+#' @param vect1CondRepsCombsCC A vector of pairwise-computed correction constants for first condition's tech reps (QCC=1 is no correction)
+#' @param vect2CondRepsCombsCC A vector of pairwise-computed correction constants for second condition's tech reps (QCC=1 is no correction)
+#' @param Q Optional (default=0.95), confidence level, quantile
+#' @param thr Optional (default=NA), threshold on the overall number of counts for a gene to be considered in the analysis
+#' @param thrUP Optional (default=NA), threshold for max gene coverage (default = NA)
+#' @param thrType Optional (default = "each", also can be "average" for average coverage on replicates), threshold type
+#' @param minDifference Optional (default=NA), if specified, one additional column is added to the output (T/F depending if the gene changed AI expression more than minDifference in addition to passing the test)
+#'
+#' @return A table of gene names, AIs + CIs for both conditions, p-values for both non-corrected (BT..) and QCC corrected (BT_CC..) differential tests, classification into genes demonstrating signifficant difference (TRUE) of AI estimates in two conditions, and those that don't (FALSE).
+#'
 #' @export
 #'
 #' @importFrom stats "prop.test"
@@ -45,9 +47,13 @@ PerformBinTestAIAnalysisForTwoConditions_knownCC <- function(inDF, vect1CondReps
 
   DF$BT_pval <- sapply(1:nrow(DF), function(i){
     if (!is.na(DF$matCOV_1[i]) & !is.na(DF$matCOV_2[i]) & DF$matCOV_1[i] > 0 & DF$matCOV_2[i] > 0){
-      prop.test(x = c(DF$matCOV_1[i], DF$matCOV_2[i]),
-                n = c(DF$sumCOV_1[i], DF$sumCOV_2[i]),
-                alternative="two.sided", correct=F)$p.value
+      withCallingHandlers({
+        prop.test(x = c(DF$matCOV_1[i], DF$matCOV_2[i]),
+                  n = c(DF$sumCOV_1[i], DF$sumCOV_2[i]),
+                  alternative="two.sided", correct=F)$p.value
+      }, warning=function(w) {
+        if (conditionMessage(w) == "Chi-squared approximation may be incorrect") {invokeRestart("muffleWarning")}
+      })
     } else {
       NA
     }
@@ -58,9 +64,13 @@ PerformBinTestAIAnalysisForTwoConditions_knownCC <- function(inDF, vect1CondReps
 
   DF$BT_CC_pval <- sapply(1:nrow(DF), function(i){
     if (!is.na(DF$matCOV_1[i]) & !is.na(DF$matCOV_2[i]) & DF$matCOV_1[i] > 0 & DF$matCOV_2[i] > 0){
-      prop.test(x = c(DF$matCOV_1[i] * k1, DF$matCOV_2[i] * k2),
-                n = c(DF$sumCOV_1[i] * k1, DF$sumCOV_2[i] * k2),
-                alternative="two.sided", correct=F)$p.value
+      withCallingHandlers({
+        prop.test(x = c(DF$matCOV_1[i] * k1, DF$matCOV_2[i] * k2),
+                  n = c(DF$sumCOV_1[i] * k1, DF$sumCOV_2[i] * k2),
+                  alternative="two.sided", correct=F)$p.value
+      }, warning=function(w) {
+        if (conditionMessage(w) == "Chi-squared approximation may be incorrect") {invokeRestart("muffleWarning")}
+      })
     } else {
       NA
     }

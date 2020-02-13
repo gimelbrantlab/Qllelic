@@ -17,27 +17,27 @@ ComputeAICIs(
 )
 }
 \arguments{
-\item{inDF}{A table with ref & alt counts per gene/SNP for each replicate plus the first column with gene/SNP names}
+\item{inDF}{Allele counts dataframe: with 2n+1 columns, "ID" and 2n columns with ref & alt counts (rep1_ref, rep1_alt, rep2_ref, rep2_alt, ...)}
 
-\item{vectReps}{A vector (>=2) of replicate numbers that should be considered as tech reps}
+\item{vectReps}{A vector of replicate numbers for which the analysis should be applied}
 
-\item{vectRepsCombsCC}{A vector of pairwise-computed correction constants for given replicates}
+\item{vectRepsCombsCC}{A vector of pairwise-computed correction constants for given replicates (QCC=1 is no correction)}
 
-\item{pt}{A value or a vector of values to compare with (if second, should be compatible with the order and size of genes vector in table of allelic counts)}
+\item{pt}{Optional (default=0.5), a value or a vector of values to compare with (if second, should be compatible with the order and size of genes vector in table of allelic counts)}
 
-\item{Q}{An optional parameter; quantile (for example 0.95, 0.8, etc)}
+\item{Q}{Optional (default=0.95), confidence level, quantile}
 
-\item{BF}{Bonferroni correction, set False if Q is alredy corrected}
+\item{BF}{Optional (default=True), Bonferroni correction for multiple testing, set False ONLY IF Q is alredy corrected}
 
-\item{thr}{An optional parameter; threshold on the overall number of counts (in all replicates combined) for a gene to be considered}
+\item{thr}{Optional (default=NA), threshold on the overall number of counts for a gene to be considered in the analysis}
 
-\item{thrUP}{An optional parameter for a threshold for max gene coverage (default = NA)}
+\item{thrUP}{Optional (default=NA), threshold for max gene coverage (default = NA)}
 
-\item{thrType}{An optional parameter for threshold type (default = "each", also can be "average" coverage on replicates)}
+\item{thrType}{Optional (default = "each", also can be "average" for average coverage on replicates), threshold type}
 }
 \value{
-A table of gene names, AI, coverage, test p-value, and Confidence Intervals
+A table with IDs, AI estimates, coverage, test p-value, and Confidence Intervals
 }
 \description{
-Calculate Binomial and QCC-corrected binomial CIs for a given vector of point estimates, for given QCC.
+Calculates Binomial and QCC-corrected binomial CIs for a given vector of AI estimates, and calculates test statistics for comparison with a point or vector of points, for given QCC.
 }

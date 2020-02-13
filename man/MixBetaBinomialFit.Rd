@@ -9,13 +9,13 @@ MixBetaBinomialFit(initials, coverage, observations)
 \arguments{
 \item{initials}{Initials for EM algm: initials = c(w1, alpha1, alpha2), weight of first component and alphas for both beta-binomial distributions in a mixture}
 
-\item{coverage}{A number, that reflects higher boundary of the coerage bin}
+\item{coverage}{A number, that represents the coverage bin}
 
-\item{observations}{A vector of maternal counts in the bin}
+\item{observations}{A vector of "maternal counts" in the bin}
 }
 \value{
-Weight of first component and alphas for both beta-binomial distributions in a mixture, to which algm coincided, plus number of steps.
+Fitted weight of first component and alphas for both beta-binomial distributions in a mixture, plus number of steps.
 }
 \description{
-Fitting beta-binomial mixture distribution of AI.
+Fitting beta-binomial mixture distribution of AI in particular bin.
 }

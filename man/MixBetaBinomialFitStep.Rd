@@ -9,13 +9,13 @@ MixBetaBinomialFitStep(initials_old, coverage, observations)
 \arguments{
 \item{initials_old}{Initials for EM step: initials = c(w1, alpha1, alpha2), weight of first component and alphas for both beta-binomial distributions in a mixture}
 
-\item{coverage}{A number, that reflects higher boundary of the coerage bin}
+\item{coverage}{A number, that represents the coverage bin}
 
-\item{observations}{A vector of maternal counts in the bin}
+\item{observations}{A vector of "maternal counts" in the bin}
 }
 \value{
 Re-fitted initials for next EM step.
 }
 \description{
-One step of fitting beta-binomial mixture distribution of AI.
+One step of fitting beta-binomial mixture distribution of AI in particular bin.
 }

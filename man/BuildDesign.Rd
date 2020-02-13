@@ -11,7 +11,7 @@ BuildDesign(experimentNames, techReps, corrConst = NA)
 
 \item{techReps}{Vector with number of technical replicates in each experiment}
 
-\item{corrConst}{Optional, Vector with correction constants for each experiment}
+\item{corrConst}{Optional, a vector with correction constants for each experiment}
 }
 \value{
 Dataframe with experiments numbered and numbers of columns

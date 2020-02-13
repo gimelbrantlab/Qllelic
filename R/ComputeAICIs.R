@@ -1,17 +1,19 @@
 #' ComputeAICIs
 #'
-#' Calculate Binomial and QCC-corrected binomial CIs for a given vector of point estimates, for given QCC.
+#' Calculates Binomial and QCC-corrected binomial CIs for a given vector of AI estimates, and calculates test statistics for comparison with a point or vector of points, for given QCC.
 #'
-#' @param inDF A table with ref & alt counts per gene/SNP for each replicate plus the first column with gene/SNP names
-#' @param vectReps A vector (>=2) of replicate numbers that should be considered as tech reps
-#' @param vectRepsCombsCC A vector of pairwise-computed correction constants for given replicates
-#' @param pt A value or a vector of values to compare with (if second, should be compatible with the order and size of genes vector in table of allelic counts)
-#' @param Q An optional parameter; quantile (for example 0.95, 0.8, etc)
-#' @param BF Bonferroni correction, set False if Q is alredy corrected
-#' @param thr An optional parameter; threshold on the overall number of counts (in all replicates combined) for a gene to be considered
-#' @param thrUP An optional parameter for a threshold for max gene coverage (default = NA)
-#' @param thrType An optional parameter for threshold type (default = "each", also can be "average" coverage on replicates)
-#' @return A table of gene names, AI, coverage, test p-value, and Confidence Intervals
+#' @param inDF Allele counts dataframe: with 2n+1 columns, "ID" and 2n columns with ref & alt counts (rep1_ref, rep1_alt, rep2_ref, rep2_alt, ...)
+#' @param vectReps A vector of replicate numbers for which the analysis should be applied
+#' @param vectRepsCombsCC A vector of pairwise-computed correction constants for given replicates (QCC=1 is no correction)
+#' @param pt Optional (default=0.5), a value or a vector of values to compare with (if second, should be compatible with the order and size of genes vector in table of allelic counts)
+#' @param Q Optional (default=0.95), confidence level, quantile
+#' @param BF Optional (default=True), Bonferroni correction for multiple testing, set False ONLY IF Q is alredy corrected
+#' @param thr Optional (default=NA), threshold on the overall number of counts for a gene to be considered in the analysis
+#' @param thrUP Optional (default=NA), threshold for max gene coverage (default = NA)
+#' @param thrType Optional (default = "each", also can be "average" for average coverage on replicates), threshold type
+#'
+#' @return A table with IDs, AI estimates, coverage, test p-value, and Confidence Intervals
+#'
 #' @export
 #'
 #' @importFrom stats "prop.test"
@@ -61,7 +63,11 @@ ComputeAICIs <- function(inDF, vectReps,
   # Bin test:
   tmpDFbt <- t(sapply(1:nrow(DF), function(i){
     if(is.na(matCOV[i]) | is.na(sumCOV[i]) | sumCOV[i]==0) { return(c(NA,NA,NA)) }
-    BT <- prop.test(matCOV[i], sumCOV[i], alternative="two.sided", p = pt_vect[i], conf.level = Qbf, correct=F)
+    BT <- withCallingHandlers({
+        prop.test(matCOV[i], sumCOV[i], alternative="two.sided", p = pt_vect[i], conf.level = Qbf, correct=F)
+      }, warning=function(w) {
+        if (conditionMessage(w) == "Chi-squared approximation may be incorrect") {invokeRestart("muffleWarning")}
+      })
     c(BT$p.value, BT$conf.int[1], BT$conf.int[2])
   }))
 
@@ -73,7 +79,11 @@ ComputeAICIs <- function(inDF, vectReps,
 
   tmpDFbtcc <- t(sapply(1:nrow(DF), function(i){
     if(is.na(matCOV[i]) | is.na(sumCOV[i]) | sumCOV[i]==0) { return(c(NA,NA,NA)) }
-    BTcc <- prop.test(matCOV[i] * k, sumCOV[i] * k, alternative="two.sided", p = pt_vect[i], conf.level = Qbf, correct=F)
+    BTcc <- withCallingHandlers({
+      prop.test(matCOV[i] * k, sumCOV[i] * k, alternative="two.sided", p = pt_vect[i], conf.level = Qbf, correct=F)
+    }, warning=function(w) {
+      if (conditionMessage(w) == "Chi-squared approximation may be incorrect") {invokeRestart("muffleWarning")}
+    })
     c(BTcc$p.value, BTcc$conf.int[1], BTcc$conf.int[2])
   }))
 

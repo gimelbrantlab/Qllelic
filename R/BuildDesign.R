@@ -4,7 +4,7 @@
 #'
 #' @param experimentNames Vector with names of the experiments
 #' @param techReps Vector with number of technical replicates in each experiment
-#' @param corrConst Optional, Vector with correction constants for each experiment
+#' @param corrConst Optional, a vector with correction constants for each experiment
 #'
 #' @return Dataframe with experiments numbered and numbers of columns
 #' @export

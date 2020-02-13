@@ -1,19 +1,21 @@
 #' PerformBinTestAIAnalysisForTwoConditions
 #'
-#' Calculate QCC. Perform differential tests for AI values for two conditions.
+#' Calculates QCC. Performs differential tests (with Bonferroni correction) for AI values for two conditions.
 #'
-#' @param inDF A table with ref & alt counts per gene/SNP for each replicate plus the first column with gene/SNP names
+#' @param inDF Allele counts dataframe: with 2n+1 columns, "ID" and 2n columns with ref & alt counts (rep1_ref, rep1_alt, rep2_ref, rep2_alt, ...)
 #' @param vect1CondReps A vector (>=2) of replicate numbers that should be considered as first condition's tech reps
 #' @param vect2CondReps A vector (>=2) of replicate numbers that should be considered as second condition's tech reps
-#' @param binNObs Threshold on number of observations per bin
-#' @param fitCovThr Threshold on coverage for genes that will be included in Beta-Bin fitting
-#' @param Q An optional parameter; quantile (for example 0.95, 0.8, etc)
-#' @param EPS An optional parameter to set a log window for coverage binning
-#' @param thr An optional parameter; threshold on the overall number of counts (in all replicates combined) for a gene to be considered
-#' @param thrUP An optional parameter for a threshold for max gene coverage (default = NA)
-#' @param thrType An optional parameter for threshold type (default = "each", also can be "average" coverage on replicates)
-#' @param minDifference if specified, one additional column DAE is added to the output (T/F depending if the gene changed AI expression more than minDifference in addition to having non-overlapping CIs)
+#' @param binNObs Optional (default=40), threshold on number of observations per bin
+#' @param fitCovThr Optional (default=50), threshold on coverage for genes that will be included in Beta-Bin fitting
+#' @param Q Optional (default=0.95), confidence level, quantile
+#' @param EPS Optional (default=1.05), base of exponent for the coverage binning, setting greater base (1.1 or 1.2 or 1.3) would result in fewer number of coverage bins in fitting process, thus will increase the computational speed, but may potentially reduce accuracy
+#' @param thr Optional (default=NA), threshold on the overall number of counts for a gene to be considered in the analysis
+#' @param thrUP Optional (default=NA), threshold for max gene coverage (default = NA)
+#' @param thrType Optional (default = "each", also can be "average" for average coverage on replicates), threshold type
+#' @param minDifference Optional (default=NA), if specified, one additional column is added to the output (T/F depending if the gene changed AI expression more than minDifference in addition to passing the test)
+#'
 #' @return List of (1) fitted QCC for all combanatorial pairs of replicates for both conditions ($CC), (2) ComputeCorrConstantsForAllPairsReps() output for both conditions ($FitDATA), and (3) PerformBinTestAIAnalysisForTwoConditions_knownCC() output ($Output).
+#'
 #' @export
 #'
 PerformBinTestAIAnalysisForTwoConditions <- function(inDF, vect1CondReps, vect2CondReps, binNObs=40, fitCovThr=50, Q=0.95, EPS=1.05,

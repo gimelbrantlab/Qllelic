@@ -20,31 +20,31 @@ PerformBinTestAIAnalysisForConditionNPointVect(
 )
 }
 \arguments{
-\item{inDF}{A table with ref & alt counts per gene/SNP for each replicate plus the first column with gene/SNP names}
+\item{inDF}{Allele counts dataframe: with 2n+1 columns, "ID" and 2n columns with ref & alt counts (rep1_ref, rep1_alt, rep2_ref, rep2_alt, ...)}
 
-\item{vectReps}{A vector (>=2) of replicate numbers that should be considered as tech reps}
+\item{vectReps}{A vector (>=2) of replicate numbers for which the analysis should be applied}
 
-\item{ptVect}{A vector of point to compare with (should be compatible with the order and size of genes vector in table of allelic counts)}
+\item{ptVect}{A vector of values to compare with, should be compatible with the order and size of genes vector in table of allelic counts}
 
-\item{binNObs}{Threshold on number of observations per bin}
+\item{binNObs}{Optional (default=40), threshold on number of observations per bin}
 
-\item{Q}{An optional parameter; quantile (for example 0.95, 0.8, etc)}
+\item{Q}{Optional (default=0.95), confidence level, quantile}
 
-\item{fitCovThr}{Threshold on coverage for genes that will be included in Beta-Bin fitting}
+\item{fitCovThr}{Optional (default=50), threshold on coverage for genes that will be included in Beta-Bin fitting}
 
-\item{EPS}{An optional parameter to set a log window for coverage binning}
+\item{EPS}{Optional (default=1.05), base of exponent for the coverage binning, setting greater base (1.1 or 1.2 or 1.3) would result in fewer number of coverage bins in fitting process, thus will increase the computational speed, but may potentially reduce accuracy}
 
-\item{thr}{An optional parameter; threshold on the overall number of counts (in all replicates combined) for a gene to be considered}
+\item{thr}{Optional (default=NA), threshold on the overall number of counts for a gene to be considered in the analysis}
 
-\item{thrUP}{An optional parameter for a threshold for max gene coverage (default = NA)}
+\item{thrUP}{Optional (default=NA), threshold for max gene coverage (default = NA)}
 
-\item{thrType}{An optional parameter for threshold type (default = "each", also can be "average" coverage on replicates)}
+\item{thrType}{Optional (default = "each", also can be "average" for average coverage on replicates), threshold type}
 
-\item{minDifference}{if specified, one additional column DAE is added to the output (T/F depending if the gene changed AI expression more than minDifference in addition to having non-overlapping CIs)}
+\item{minDifference}{Optional (default=NA), if specified, one additional column is added to the output (T/F depending if the gene changed AI expression more than minDifference in addition to passing the test)}
 }
 \value{
 List of (1) fitted QCC for all combanatorial pairs of replicates ($CC), (2) ComputeCorrConstantsForAllPairsReps() output ($FitDATA), and (3) PerformBinTestAIAnalysisForConditionNPointVect_knownCC() output ($Output).
 }
 \description{
-Calculate QCC. Perform Binomial and QCC-corrected binomial tests with a given vector of point estimates.
+Calculates QCC. Performs Binomial and QCC-corrected binomial tests (with Bonferroni correction) with a given vector of point estimates.
 }

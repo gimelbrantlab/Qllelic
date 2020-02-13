@@ -1,14 +1,15 @@
 #' MergeSumCounts
 #'
-#' Creates a table of sums of maternal and paternal count for given replicates.
+#' Creates a table of sums of maternal and paternal alellic counts for given replicates.
 #'
-#' @param df A dataframe of genes/transcripts and parental counts for technical replicates in columns.
-#' @param reps An optional parameter for a range op replicates for consideration (default = all replicates in df).
-#' @param thr An optional parameter for a threshold on gene coverage (default = NA)
-#' @param thrUP An optional parameter for a threshold for max gene coverage (default = NA)
-#' @param thrType An optional parameter for threshold type (default = "each", also can be "average" coverage on replicates)
+#' @param df Allele counts dataframe: with 2n+1 columns, "ID" and 2n columns with ref & alt counts (rep1_ref, rep1_alt, rep2_ref, rep2_alt, ...)
+#' @param reps Optional (default=NA, all replicates), a vector of replicate numbers for which the analysis should be applied
+#' @param thr Optional (default=NA), threshold on the overall number of counts for a gene to be considered in the analysis
+#' @param thrUP Optional (default=NA), threshold for max gene coverage (default = NA)
+#' @param thrType Optional (default = "each", also can be "average" for average coverage on replicates), threshold type
 #'
-#' @return Table with names and sums of mat and pat coverages among given replicates.
+#' @return A table with IDs and calculated allelic counts for each of the given replicates
+#'
 #' @export
 #'
 #' @examples MeanCoverage(allelicCountsTable, reps=c(1,2))

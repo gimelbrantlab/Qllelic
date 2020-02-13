@@ -1,15 +1,16 @@
 #' CountsToAI
 #'
-#' Calculates allelic imbalances from merged counts over given replicates (ai(sum_reps(gene)))
+#' Calculates allelic imbalances from merged counts over given replicates (ai(sum_reps(gene))).
 #'
-#' @param df A dataframe of genes/transcripts and parental counts for technical replicates in columns
-#' @param reps An optional parameter for a range op replicates for consideration (default = all replicates in df)
-#' @param meth An optional parameter for method to use, either sum(m)/sum(p), or sum(m/p) (default = sum(m)/sum(p))
-#' @param thr An optional parameter for a threshold on gene coverage (default = NA)
-#' @param thrUP An optional parameter for a threshold for max gene coverage (default = NA)
-#' @param thrType An optional parameter for threshold type (default = "each", also can be "average" coverage on replicates)
+#' @param df Allele counts dataframe: with 2n+1 columns, "ID" and 2n columns with ref & alt counts (rep1_ref, rep1_alt, rep2_ref, rep2_alt, ...)
+#' @param reps Optional (default=NA, all replicates), a vector of replicate numbers for which the analysis should be applied
+#' @param meth Optional (default="mergedToProportion", also can be "meanOfProportions"), method to use, either sum(m)/sum(p) (default), or sum(m/p)
+#' @param thr Optional (default=NA), threshold on the overall number of counts for a gene to be considered in the analysis
+#' @param thrUP Optional (default=NA), threshold for max gene coverage (default = NA)
+#' @param thrType Optional (default = "each", also can be "average" for average coverage on replicates), threshold type
 #'
-#' @return Df with names and mean(mean(m_1,...,m_6))_SNP / mean(mean(m_1+p_1,...,m_6+p6))_SNP
+#' @return A table with IDs and calculated AI estimate for given set of replicates
+#'
 #' @export
 #'
 #' @examples CountsToAI(allelicCountsTable, reps=c(1,2), thr=10, thrUP=1000)

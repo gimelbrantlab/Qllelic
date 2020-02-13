@@ -1,12 +1,12 @@
 #' MixBetaBinomialFit
 #'
-#' Fitting beta-binomial mixture distribution of AI.
+#' Fitting beta-binomial mixture distribution of AI in particular bin.
 #'
 #' @param initials Initials for EM algm: initials = c(w1, alpha1, alpha2), weight of first component and alphas for both beta-binomial distributions in a mixture
-#' @param coverage A number, that reflects higher boundary of the coerage bin
-#' @param observations A vector of maternal counts in the bin
+#' @param coverage A number, that represents the coverage bin
+#' @param observations A vector of "maternal counts" in the bin
 #'
-#' @return Weight of first component and alphas for both beta-binomial distributions in a mixture, to which algm coincided, plus number of steps.
+#' @return Fitted weight of first component and alphas for both beta-binomial distributions in a mixture, plus number of steps.
 #' @export
 #'
 MixBetaBinomialFit <- function(initials, coverage, observations){
