@@ -8,11 +8,17 @@ Input: tables of allelic counts, calculated from RNA-seq data using sequencing a
 
 ## Installation
 
-To install this package in R:
+To install current version of this package in R:
 
 ``` r
 devtools::install_github("gimelbrantlab/QCumber")
 ```
+To install a specific version:
+
+``` r
+devtools::install_github("gimelbrantlab/QCumber@v0.3.1")
+```
+
 
 ## Usage
 
