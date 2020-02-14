@@ -1,10 +1,10 @@
 
 # QCumber (v0.3.2)
 
-R tools for quantification of allelic imbalance within one sample and for differential analysis of allelic imbalance between two or more samples. Relies on comparison of allele-specific signal from technical replicate RNA-seq libraries to compensate for technical noise.  
-Input: tables of allelic counts, calculated from RNA-seq data using sequencing analysis pipeline such as [ASEReadCounter*](https://github.com/gimelbrantlab/ASEReadCounter_star).
+**QCumber** is a set of R tools for quantification of allele-specific expression. It relies on two or more technical replicate RNA-seq libraries to calculate Quality Correction Constant (QCC) and use it to correct for allelic imbalance overdipserion.
+**QCumber** analysis starts with a table of allelic counts per gene, calculated from RNA-seq data using any analysis pipeline such as **[ASEReadCounter*](https://github.com/gimelbrantlab/ASEReadCounter_star)**.
 
-![pic](https://github.com/gimelbrantlab/ASE/blob/master/ASEReadsCounterstar_QCumber_flowchart.svg)
+Mendelevich A.\*, Vinogradova S.\*, Gupta S., Mironov A., Sunyaev S., Gimelbrant A.  _"Unexpected variability of allelic imbalance estimates from RNA sequencing"_. bioRxiv link
 
 ## Installation
 
@@ -16,15 +16,11 @@ devtools::install_github("gimelbrantlab/QCumber")
 To install a specific version: `devtools::install_github("gimelbrantlab/QCumber@v0.3.1")`
 
 
-## Usage
+## Manual
 
-Please see [Wiki page](https://github.com/gimelbrantlab/QCumber/wiki) for worked exaples:
+Please see walk-through examples on the [Wiki page](https://github.com/gimelbrantlab/QCumber/wiki)
 * for [QCC calculation and CI estimation](https://github.com/gimelbrantlab/QCumber/wiki/Use-case-1:-One-biological-sample)
 * for [AI differential analysis for two samples](https://github.com/gimelbrantlab/QCumber/wiki/Use-case-2:-Differential-AI-analysis)
-
-## Citations
-
-Please cite _"Unexpected variability of allelic imbalance estimates from RNA sequencing", Mendelevich A.*, Vinogradova S.*, Gupta S., Mironov A., Sunyaev S., Gimelbrant A._, if you used our R-package in your work.
 
 ## Reporting bugs
 
