@@ -32,7 +32,7 @@ PerformBinTestAIAnalysisForTwoConditions <- function(inDF, vect1CondReps, vect2C
   vect2CondRepsCombsCC <- sapply(fitDATA2Cond, function(fd){
     fd$fittedCC
   })
-  print(paste(vect1CondRepsCombsCC, vect2CondRepsCombsCC))
+  #print(paste(vect1CondRepsCombsCC, vect2CondRepsCombsCC))
 
   RES <- PerformBinTestAIAnalysisForTwoConditions_knownCC(inDF, vect1CondReps=vect1CondReps, vect2CondReps=vect2CondReps,
                                                           vect1CondRepsCombsCC=vect1CondRepsCombsCC,
