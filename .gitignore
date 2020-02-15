@@ -3,5 +3,4 @@
 .RData
 .DS_Store
 .Rbuildignore
-.gitignore
 QCumber.Rproj
