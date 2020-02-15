@@ -2,5 +2,3 @@
 .Rhistory
 .RData
 .DS_Store
-.Rbuildignore
-QCumber.Rproj
