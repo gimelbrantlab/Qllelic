@@ -18,11 +18,7 @@
 #'
 #' @importFrom stats "prop.test"
 #'
-ComputeAICIs <- function(inDF, vectReps,
-                         vectRepsCombsCC,
-                         pt = 0.5,
-                         Q=0.95, BF=T,
-                         thr=NA, thrUP=NA, thrType="each"){
+ComputeAICIs <- function(inDF, vectReps, vectRepsCombsCC, pt = 0.5, Q=0.95, BF=T, thr=NA, thrUP=NA, thrType="each"){
 
   CC <- mean(vectRepsCombsCC)
 
