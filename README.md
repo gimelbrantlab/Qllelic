@@ -18,7 +18,7 @@ To install a specific version: `devtools::install_github("gimelbrantlab/QCumber@
 
 ## Manual
 
-Plese find documentation [here](https://github.com/gimelbrantlab/QCumber/wiki/documentation/QCumber_documentation.pdf).
+Full documentation: [pdf document](https://github.com/gimelbrantlab/QCumber/wiki/documentation/QCumber_documentation.pdf).
 
 Please see walk-through examples on the [Wiki page](https://github.com/gimelbrantlab/QCumber/wiki)
 * for [QCC calculation and CI estimation](https://github.com/gimelbrantlab/QCumber/wiki/Use-case-1:-One-biological-sample)
