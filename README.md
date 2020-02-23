@@ -4,7 +4,7 @@
 **QCumber** is a set of R tools for quantification of allele-specific expression. It relies on two or more technical replicate RNA-seq libraries to calculate Quality Correction Constant (QCC) and use it to correct for allelic imbalance overdipserion.
 **QCumber** analysis starts with a table of allelic counts per gene, calculated from RNA-seq data using any analysis pipeline such as **[ASEReadCounter*](https://github.com/gimelbrantlab/ASEReadCounter_star)**.
 
-Mendelevich A.\*, Vinogradova S.\*, Gupta S., Mironov A., Sunyaev S., Gimelbrant A.  _"Unexpected variability of allelic imbalance estimates from RNA sequencing"_. bioRxiv link
+Mendelevich A.\*, Vinogradova S.\*, Gupta S., Mironov A., Sunyaev S., Gimelbrant A.  _"Unexpected variability of allelic imbalance estimates from RNA sequencing"_. [bioRxiv link](https://www.biorxiv.org/content/10.1101/2020.02.18.948323v1)
 
 ## Installation
 
