@@ -13,7 +13,7 @@ To install current version of this package in R:
 ``` r
 devtools::install_github("gimelbrantlab/QCumber")
 ```
-To install a specific version: `devtools::install_github("gimelbrantlab/QCumber@v0.3.1")`
+Installation takes less than 1 minute. To install a specific version: `devtools::install_github("gimelbrantlab/QCumber@v0.3.1")`
 
 
 ## Manual
