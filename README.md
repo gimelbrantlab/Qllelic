@@ -15,7 +15,7 @@ devtools::install_github("gimelbrantlab/Qllelic")
 ```
 Installation takes less than 1 minute. 
 
-To install a previous version: `devtools::install_github("gimelbrantlab/Qllelic@v0.3.1")`, please take into account that it existed with different [name](https://github.com/gimelbrantlab/QCumber), so possibly it would be installed as "QCumber".
+To install a previous version: `devtools::install_github("gimelbrantlab/Qllelic@v0.3.1")`, please take into account that it existed with different [name](https://github.com/gimelbrantlab/QCumber), so it would be installed as "QCumber".
 
 
 ## Manual
