@@ -13,7 +13,7 @@ To install current version of this package in R:
 ``` r
 devtools::install_github("gimelbrantlab/Qllelic")
 ```
-Installation takes less than 1 minute. To install a sprevious versions: `devtools::install_github("gimelbrantlab/QCumber@v0.3.1")`, please take into account that it had different name and a different [repository](https://github.com/gimelbrantlab/QCumber).
+Installation takes less than 1 minute. To install a sprevious versions: `devtools::install_github("gimelbrantlab/QCumber@v0.3.1")`, please take into account that it existed with different name and in a different [repository](https://github.com/gimelbrantlab/QCumber).
 
 
 ## Manual
