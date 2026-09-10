@@ -8,6 +8,9 @@ Mendelevich A.\*, Vinogradova S.\*, Gupta S., Mironov A., Sunyaev S., Gimelbrant
 
 ## Installation
 
+simple:
+`docker pull sasha/ase`
+
 To install current version of this package in R:
 
 ``` r
